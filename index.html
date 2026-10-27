@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>MÆDNESS® — Event Link</title>
+  <title>MÆDNESS — Event Link</title>
   <meta
     name="description"
-    content="MÆDNESS® — Halloween: The Heart Exchange."
+    content="MÆDNESS — Halloween: The Heart Exchange."
   >
   <meta name="theme-color" content="#050505">
 
-  <meta property="og:title" content="MÆDNESS® — Halloween: The Heart Exchange">
+  <meta property="og:title" content="MÆDNESS — Halloween: The Heart Exchange">
   <meta
     property="og:description"
-    content="Apri il link ufficiale dell'evento MÆDNESS®."
+    content="Apri il link ufficiale dell'evento MÆDNESS."
   >
   <meta
     property="og:image"
@@ -72,7 +72,7 @@
       inset: 0;
       content: "";
       pointer-events: none;
-      opacity: .16;
+      opacity: .14;
       background:
         repeating-linear-gradient(
           0deg,
@@ -82,8 +82,47 @@
         );
     }
 
+    body::after {
+      position: fixed;
+      z-index: 0;
+      top: -30%;
+      left: -40%;
+      width: 180%;
+      height: 30%;
+      content: "";
+      pointer-events: none;
+      opacity: .12;
+      background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(255, 16, 16, .2),
+        transparent
+      );
+      animation: backgroundScan 9s linear infinite;
+    }
+
     a {
       color: inherit;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      z-index: 10;
+      top: 52px;
+      right: 8px;
+      bottom: 18px;
+      width: 2px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .18);
+    }
+
+    .scroll-progress span {
+      display: block;
+      width: 100%;
+      height: 0;
+      background: var(--red);
+      transform-origin: top;
+      box-shadow: 0 0 8px rgba(255, 16, 16, .8);
     }
 
     .page {
@@ -119,28 +158,55 @@
       letter-spacing: .07em;
     }
 
-    .topbar-event {
+    .topbar-signal {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 7px;
       color: var(--red);
       text-align: right;
+    }
+
+    .signal-dot {
+      position: relative;
+      width: 6px;
+      height: 6px;
+      flex: 0 0 6px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 9px rgba(255, 16, 16, .85);
+      animation: signalPulse 1.5s ease-in-out infinite;
+    }
+
+    .signal-dot::after {
+      position: absolute;
+      inset: -4px;
+      content: "";
+      border: 1px solid rgba(255, 16, 16, .65);
+      border-radius: 50%;
+      animation: signalRipple 1.5s ease-out infinite;
     }
 
     .profile {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 48px 0 36px;
+      padding: 48px 0 32px;
       text-align: center;
+      animation: sectionReveal .7s .08s ease both;
     }
 
     .avatar-frame {
       position: relative;
-      width: 94px;
-      height: 94px;
+      width: 96px;
+      height: 96px;
       margin-bottom: 17px;
       padding: 4px;
       border: 1px solid rgba(255, 16, 16, .75);
       border-radius: 50%;
-      box-shadow: 0 0 28px rgba(255, 16, 16, .13);
+      box-shadow:
+        0 0 20px rgba(255, 16, 16, .13),
+        inset 0 0 14px rgba(255, 16, 16, .08);
     }
 
     .avatar-frame::before,
@@ -165,15 +231,32 @@
       border-width: 0 1px 1px 0;
     }
 
+    .avatar-orbit {
+      position: absolute;
+      z-index: 2;
+      inset: -6px;
+      border: 1px solid transparent;
+      border-top-color: var(--red);
+      border-right-color: rgba(255, 16, 16, .28);
+      border-radius: 50%;
+      animation: orbit 7s linear infinite;
+      pointer-events: none;
+    }
+
     .avatar {
       display: block;
       width: 100%;
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
+      animation: logoBreath 4s ease-in-out infinite;
     }
 
     .profile-kicker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       margin-bottom: 7px;
       color: var(--red);
       font-size: 8px;
@@ -189,15 +272,10 @@
       font-weight: 400;
       line-height: .9;
       letter-spacing: -.025em;
-    }
-
-    .registered {
-      display: inline-block;
-      margin-left: 2px;
-      font-family: "Inter", sans-serif;
-      font-size: .24em;
-      font-weight: 900;
-      vertical-align: top;
+      text-shadow:
+        3px 0 rgba(255, 16, 16, .72),
+        -1px 0 rgba(255, 255, 255, .22);
+      animation: wordmarkFlicker 5s ease-in-out infinite;
     }
 
     .profile-caption {
@@ -207,6 +285,38 @@
       font-weight: 800;
       letter-spacing: .2em;
       text-transform: uppercase;
+    }
+
+    .marquee {
+      position: relative;
+      width: calc(100% + 40px);
+      margin: 0 -20px 23px;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 16, 16, .32);
+      border-bottom: 1px solid rgba(255, 16, 16, .32);
+      background: rgba(255, 16, 16, .035);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeMove 22s linear infinite;
+    }
+
+    .marquee-text {
+      display: block;
+      padding: 9px 0;
+      color: rgba(255, 255, 255, .62);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .marquee-text span {
+      padding: 0 17px;
+      color: var(--red);
     }
 
     .section-label {
@@ -233,6 +343,9 @@
       background: #0b0b0b;
       color: var(--white);
       text-decoration: none;
+      transform: translateY(10px);
+      opacity: 0;
+      animation: cardReveal .75s .16s cubic-bezier(.22, .75, .25, 1) forwards;
       transition:
         border-color .22s ease,
         transform .22s ease,
@@ -249,6 +362,24 @@
       transform: scale(.985);
     }
 
+    .event-link::before {
+      position: absolute;
+      z-index: 3;
+      top: 0;
+      left: -100%;
+      width: 70%;
+      height: 1px;
+      content: "";
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--red),
+        transparent
+      );
+      animation: borderSweep 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
     .event-image-wrap {
       position: relative;
       overflow: hidden;
@@ -256,8 +387,27 @@
       background: #160707;
     }
 
+    .event-image-wrap::before {
+      position: absolute;
+      z-index: 1;
+      top: -20%;
+      left: 0;
+      width: 100%;
+      height: 16%;
+      content: "";
+      background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(255, 16, 16, .44),
+        transparent
+      );
+      animation: imageScan 5s ease-in-out infinite;
+      pointer-events: none;
+    }
+
     .event-image-wrap::after {
       position: absolute;
+      z-index: 1;
       inset: 0;
       content: "";
       pointer-events: none;
@@ -274,12 +424,14 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform .45s ease;
+      transition:
+        transform .55s cubic-bezier(.2, .7, .2, 1),
+        filter .4s ease;
     }
 
     .event-number {
       position: absolute;
-      z-index: 1;
+      z-index: 2;
       top: 12px;
       left: 12px;
       padding: 6px 8px;
@@ -330,6 +482,7 @@
       place-items: center;
       border: 1px solid var(--red);
       color: var(--red);
+      animation: arrowPulse 2.2s ease-in-out infinite;
       transition:
         background .22s ease,
         color .22s ease,
@@ -366,12 +519,13 @@
       justify-content: space-between;
       gap: 12px;
       margin-top: auto;
-      padding-top: 44px;
+      padding-top: 38px;
       color: var(--muted);
       font-size: 7px;
       font-weight: 900;
       letter-spacing: .16em;
       text-transform: uppercase;
+      animation: sectionReveal .7s .35s ease both;
     }
 
     .footer-mark {
@@ -390,7 +544,17 @@
     @keyframes pageReveal {
       from {
         opacity: 0;
-        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes sectionReveal {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
       }
 
       to {
@@ -399,21 +563,136 @@
       }
     }
 
+    @keyframes cardReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes orbit {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes logoBreath {
+      0%, 100% {
+        filter: brightness(1);
+      }
+
+      50% {
+        filter: brightness(1.14);
+      }
+    }
+
+    @keyframes wordmarkFlicker {
+      0%, 93%, 100% {
+        opacity: 1;
+        text-shadow:
+          3px 0 rgba(255, 16, 16, .72),
+          -1px 0 rgba(255, 255, 255, .22);
+      }
+
+      94% {
+        opacity: .88;
+        text-shadow:
+          5px 0 rgba(255, 16, 16, .9),
+          -2px 0 rgba(255, 255, 255, .3);
+      }
+
+      96% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes signalPulse {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .55;
+        transform: scale(.78);
+      }
+    }
+
+    @keyframes signalRipple {
+      0% {
+        opacity: .8;
+        transform: scale(.55);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(1.7);
+      }
+    }
+
+    @keyframes backgroundScan {
+      0% {
+        transform: translateY(-30vh) rotate(-12deg);
+      }
+
+      100% {
+        transform: translateY(150vh) rotate(-12deg);
+      }
+    }
+
+    @keyframes imageScan {
+      0%, 18% {
+        top: -20%;
+      }
+
+      76%, 100% {
+        top: 110%;
+      }
+    }
+
+    @keyframes borderSweep {
+      0%, 12% {
+        left: -100%;
+      }
+
+      64%, 100% {
+        left: 140%;
+      }
+    }
+
+    @keyframes arrowPulse {
+      0%, 100% {
+        box-shadow: 0 0 0 rgba(255, 16, 16, 0);
+      }
+
+      50% {
+        box-shadow: 0 0 14px rgba(255, 16, 16, .2);
+      }
+    }
+
+    @keyframes marqueeMove {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
     @media (hover: hover) {
       .event-link:hover {
         border-color: var(--red);
-        box-shadow: 0 0 26px rgba(255, 16, 16, .12);
+        box-shadow: 0 0 26px rgba(255, 16, 16, .16);
         transform: translateY(-2px);
       }
 
       .event-link:hover .event-image {
-        transform: scale(1.025);
+        filter: contrast(1.08) saturate(1.08);
+        transform: scale(1.035);
       }
 
       .event-link:hover .event-arrow {
         transform: translate(2px, -2px);
         background: var(--red);
         color: var(--black);
+        animation-play-state: paused;
       }
     }
 
@@ -446,15 +725,24 @@
 </head>
 
 <body>
+  <div class="scroll-progress" aria-hidden="true">
+    <span id="scrollProgress"></span>
+  </div>
+
   <main class="page">
 
     <header class="topbar">
-      <div class="topbar-brand">MÆDNESS®</div>
-      <div class="topbar-event">PRIVATE EVENT / 001</div>
+      <div class="topbar-brand">MÆDNESS</div>
+
+      <div class="topbar-signal">
+        <span class="signal-dot" aria-hidden="true"></span>
+        <span id="signalText">MÆDNESS / EVENT INDEX</span>
+      </div>
     </header>
 
     <section class="profile" aria-labelledby="profile-title">
       <div class="avatar-frame">
+        <span class="avatar-orbit" aria-hidden="true"></span>
         <img
           class="avatar"
           src="https://ugc.production.linktr.ee/4035012a-7d56-433f-9e0c-68214cc77aff_image.png"
@@ -464,14 +752,25 @@
         >
       </div>
 
-      <div class="profile-kicker">Official Event Link</div>
+      <div class="profile-kicker">
+        <span class="signal-dot" aria-hidden="true"></span>
+        OFFICIAL EVENTS LINK
+      </div>
 
-      <h1 id="profile-title">
-        MÆDNESS<span class="registered">®</span>
-      </h1>
-
-      <p class="profile-caption">Private Event / Foggia</p>
+      <h1 id="profile-title">MÆDNESS</h1>
+      <p class="profile-caption">FOGGIA / ITALY</p>
     </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-text">
+          MÆDNESS <span>✳</span> EVENT ACCESS <span>✳</span> FOGGIA / ITALY <span>✳</span>
+        </span>
+        <span class="marquee-text">
+          MÆDNESS <span>✳</span> EVENT ACCESS <span>✳</span> FOGGIA / ITALY <span>✳</span>
+        </span>
+      </div>
+    </div>
 
     <section aria-label="Link evento">
       <div class="section-label">
@@ -528,11 +827,110 @@
     </section>
 
     <footer class="footer">
-      <span class="footer-mark">MÆDNESS®</span>
+      <span class="footer-mark">MÆDNESS</span>
       <span class="footer-line" aria-hidden="true"></span>
-      <span>Foggia / Italy</span>
+      <span>Signal / Open</span>
     </footer>
 
   </main>
+
+  <script>
+    const progressBar =
+      document.getElementById("scrollProgress");
+
+    const signalText =
+      document.getElementById("signalText");
+
+    const reduceMotion =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let scrollScheduled = false;
+
+    function updateScrollProgress() {
+      const scrollableHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      const progress =
+        scrollableHeight > 0
+          ? (window.scrollY / scrollableHeight) * 100
+          : 0;
+
+      progressBar.style.height =
+        `${progress}%`;
+
+      scrollScheduled = false;
+    }
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!scrollScheduled) {
+          window.requestAnimationFrame(updateScrollProgress);
+          scrollScheduled = true;
+        }
+      },
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "resize",
+      updateScrollProgress,
+      { passive: true }
+    );
+
+    updateScrollProgress();
+
+    if (!reduceMotion && signalText) {
+      const signals = [
+        "MÆDNESS / EVENT INDEX",
+        "SIGNAL / ACTIVE",
+        "FOGGIA / ITALY",
+        "ACCESS / OPEN"
+      ];
+
+      const matrixChars =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 /.-_:Æ";
+
+      let signalIndex = 0;
+
+      function scrambleSignal(nextText) {
+        let frame = 0;
+        const totalFrames = 7;
+
+        const scramble = window.setInterval(() => {
+          frame++;
+
+          signalText.textContent =
+            Array.from(nextText)
+              .map((character, index) => {
+                if (character === " ") {
+                  return " ";
+                }
+
+                if (index < frame || Math.random() < .2) {
+                  return character;
+                }
+
+                return matrixChars[
+                  Math.floor(Math.random() * matrixChars.length)
+                ];
+              })
+              .join("");
+
+          if (frame >= totalFrames) {
+            window.clearInterval(scramble);
+            signalText.textContent = nextText;
+          }
+        }, 38);
+      }
+
+      window.setInterval(() => {
+        signalIndex =
+          (signalIndex + 1) % signals.length;
+
+        scrambleSignal(signals[signalIndex]);
+      }, 2400);
+    }
+  </script>
 </body>
 </html>
