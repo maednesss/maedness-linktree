@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MÆDNESS® — Event Link</title>
+  <meta
+    name="description"
+    content="MÆDNESS® — Halloween: The Heart Exchange."
+  >
+  <meta name="theme-color" content="#050505">
+
+  <meta property="og:title" content="MÆDNESS® — Halloween: The Heart Exchange">
+  <meta
+    property="og:description"
+    content="Apri il link ufficiale dell'evento MÆDNESS®."
+  >
+  <meta
+    property="og:image"
+    content="https://ugc.production.linktr.ee/d176df1d-e8e2-412a-9403-5e9816f9538b_IMG-5692.jpeg"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --red: #ff1010;
+      --black: #050505;
+      --white: #f7f7f7;
+      --muted: rgba(255, 255, 255, .55);
+      --line: rgba(255, 255, 255, .16);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--black);
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(
+          ellipse at 50% 28%,
+          rgba(100, 0, 0, .25) 0,
+          rgba(5, 5, 5, 0) 44%
+        ),
+        var(--black);
+      color: var(--white);
+      font-family: "Inter", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      position: fixed;
+      z-index: 0;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      opacity: .16;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 4px,
+          rgba(255, 255, 255, .055) 5px
+        );
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      width: min(100%, 520px);
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0 auto;
+      padding: 24px 20px 20px;
+      animation: pageReveal .7s ease both;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 30px;
+      padding-bottom: 13px;
+      border-bottom: 1px solid var(--line);
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .topbar-brand {
+      font-family: "Anton", sans-serif;
+      font-size: 15px;
+      letter-spacing: .07em;
+    }
+
+    .topbar-event {
+      color: var(--red);
+      text-align: right;
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 0 36px;
+      text-align: center;
+    }
+
+    .avatar-frame {
+      position: relative;
+      width: 94px;
+      height: 94px;
+      margin-bottom: 17px;
+      padding: 4px;
+      border: 1px solid rgba(255, 16, 16, .75);
+      border-radius: 50%;
+      box-shadow: 0 0 28px rgba(255, 16, 16, .13);
+    }
+
+    .avatar-frame::before,
+    .avatar-frame::after {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      content: "";
+      border-color: var(--red);
+      border-style: solid;
+    }
+
+    .avatar-frame::before {
+      top: -4px;
+      left: 17px;
+      border-width: 1px 0 0 1px;
+    }
+
+    .avatar-frame::after {
+      right: 17px;
+      bottom: -4px;
+      border-width: 0 1px 1px 0;
+    }
+
+    .avatar {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-kicker {
+      margin-bottom: 7px;
+      color: var(--red);
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Anton", sans-serif;
+      font-size: clamp(48px, 15vw, 68px);
+      font-weight: 400;
+      line-height: .9;
+      letter-spacing: -.025em;
+    }
+
+    .registered {
+      display: inline-block;
+      margin-left: 2px;
+      font-family: "Inter", sans-serif;
+      font-size: .24em;
+      font-weight: 900;
+      vertical-align: top;
+    }
+
+    .profile-caption {
+      margin: 11px 0 0;
+      color: var(--muted);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .section-label span:last-child {
+      color: var(--red);
+    }
+
+    .event-link {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .24);
+      background: #0b0b0b;
+      color: var(--white);
+      text-decoration: none;
+      transition:
+        border-color .22s ease,
+        transform .22s ease,
+        box-shadow .22s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .event-link:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 4px;
+    }
+
+    .event-link:active {
+      transform: scale(.985);
+    }
+
+    .event-image-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: #160707;
+    }
+
+    .event-image-wrap::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0, 0, 0, .03) 42%,
+          rgba(0, 0, 0, .48) 100%
+        );
+    }
+
+    .event-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .event-number {
+      position: absolute;
+      z-index: 1;
+      top: 12px;
+      left: 12px;
+      padding: 6px 8px;
+      border: 1px solid rgba(255, 255, 255, .45);
+      background: rgba(5, 5, 5, .7);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: .17em;
+    }
+
+    .event-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 76px;
+      padding: 14px 15px 15px;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .event-copy {
+      min-width: 0;
+    }
+
+    .event-copy-label {
+      margin-bottom: 7px;
+      color: var(--red);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .event-title {
+      margin: 0;
+      font-family: "Anton", sans-serif;
+      font-size: clamp(19px, 5.7vw, 25px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: .015em;
+    }
+
+    .event-arrow {
+      display: grid;
+      flex: 0 0 38px;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border: 1px solid var(--red);
+      color: var(--red);
+      transition:
+        background .22s ease,
+        color .22s ease,
+        transform .22s ease;
+    }
+
+    .event-arrow svg {
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+
+    .event-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 15px;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      color: var(--muted);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .event-cta span:last-child {
+      color: var(--red);
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 44px;
+      color: var(--muted);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .footer-mark {
+      color: var(--white);
+      font-family: "Anton", sans-serif;
+      font-size: 12px;
+      letter-spacing: .07em;
+    }
+
+    .footer-line {
+      height: 1px;
+      flex: 1;
+      background: var(--line);
+    }
+
+    @keyframes pageReveal {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (hover: hover) {
+      .event-link:hover {
+        border-color: var(--red);
+        box-shadow: 0 0 26px rgba(255, 16, 16, .12);
+        transform: translateY(-2px);
+      }
+
+      .event-link:hover .event-image {
+        transform: scale(1.025);
+      }
+
+      .event-link:hover .event-arrow {
+        transform: translate(2px, -2px);
+        background: var(--red);
+        color: var(--black);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .page {
+        padding-right: 16px;
+        padding-left: 16px;
+      }
+
+      .profile {
+        padding-top: 38px;
+      }
+
+      .event-title {
+        font-size: 19px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <div class="topbar-brand">MÆDNESS®</div>
+      <div class="topbar-event">PRIVATE EVENT / 001</div>
+    </header>
+
+    <section class="profile" aria-labelledby="profile-title">
+      <div class="avatar-frame">
+        <img
+          class="avatar"
+          src="https://ugc.production.linktr.ee/4035012a-7d56-433f-9e0c-68214cc77aff_image.png"
+          alt="Logo MÆDNESS"
+          width="86"
+          height="86"
+        >
+      </div>
+
+      <div class="profile-kicker">Official Event Link</div>
+
+      <h1 id="profile-title">
+        MÆDNESS<span class="registered">®</span>
+      </h1>
+
+      <p class="profile-caption">Private Event / Foggia</p>
+    </section>
+
+    <section aria-label="Link evento">
+      <div class="section-label">
+        <span>01 / Event Access</span>
+        <span>Open Link</span>
+      </div>
+
+      <a
+        class="event-link"
+        href="https://pleasuresfc.it/#maednesshalloween"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Apri HALLOWEEN: THE HEART EXCHANGE"
+      >
+        <div class="event-image-wrap">
+          <img
+            class="event-image"
+            src="https://ugc.production.linktr.ee/d176df1d-e8e2-412a-9403-5e9816f9538b_IMG-5692.jpeg"
+            alt="Locandina Halloween: The Heart Exchange"
+            width="1200"
+            height="675"
+          >
+          <span class="event-number">MÆDNESS / 001</span>
+        </div>
+
+        <div class="event-info">
+          <div class="event-copy">
+            <div class="event-copy-label">Event Link</div>
+            <h2 class="event-title">HALLOWEEN: THE HEART EXCHANGE</h2>
+          </div>
+
+          <span class="event-arrow" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 17L17 7M8 7H17V16"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="square"
+                stroke-linejoin="miter"
+              />
+            </svg>
+          </span>
+        </div>
+
+        <div class="event-cta">
+          <span>Tap to enter</span>
+          <span>Access / 001</span>
+        </div>
+      </a>
+    </section>
+
+    <footer class="footer">
+      <span class="footer-mark">MÆDNESS®</span>
+      <span class="footer-line" aria-hidden="true"></span>
+      <span>Foggia / Italy</span>
+    </footer>
+
+  </main>
+</body>
+</html>
